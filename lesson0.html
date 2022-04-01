@@ -1,0 +1,72 @@
+<html lang="en">
+<head>
+    <meta charSet="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Learning Vue</title>
+
+</head>
+<body>
+<h1> Include Vue.js and use data binding</h1>
+
+<div id="jquery-widget" style="border: 1px solid;">
+    <h2>Hello jQuery!</h2>
+    <p>This is a simple example of a jQuery component.</p>
+    <p>
+        <input id="jquery-input" type="text">
+    </p>
+    <p id="jquery-output"></p>
+</div>
+
+<hr>
+
+<div id="vue-widget" style="border: 1px dashed;">
+    <h2>Hello Vue.js!</h2>
+    <p>This is a simple example of a Vue.js component.</p>
+    <p>
+        <input placeholder="Enter message" type="text" v-model="message"><br>
+    <!--    <input placeholder="Enter message" type="text" v-model="message3">-->
+    </p>
+    <p>{{ message }}-</p>
+<!--    <p>{{ message3 }}-</p>-->
+</div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#jquery-output').text('Hello Jquery');
+        $('#jquery-input').val('Hello Jquery')
+
+        $('input#jquery-input').on('keyup', function () {
+            $('#jquery-output').text($(this).val());
+        });
+    });
+</script>
+
+<script src="https://unpkg.com/vue@3.1.1"></script>
+<script>
+    //let message2 = 'Hello Vue Not reactive!';
+    var app = Vue.createApp({
+        mounted() {
+          /*  this.message3 = 'Hello Vue Not reactive!'
+            this.message = 'Hello Vue! Update'*/
+            //dom available, setup logic,
+            // http to receive data
+        },
+        data() {
+            return {
+                message: 'Hello Vue!' // html
+            }
+        },
+/*        computed: {
+            messageLength() {
+                return this.message.length;
+            }
+        },*/
+        methods: {}
+    })
+    app.mount('#vue-widget')
+</script>
+
+</body>
+</html>

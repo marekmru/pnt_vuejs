@@ -1,0 +1,59 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Learning Vue</title>
+
+</head>
+<body>
+
+<h1>Lesson 2 | Hello Vue.js</h1>
+
+<div id="app">
+    <div v-if="showName">
+        <p>My name is {{ name }}</p>
+    </div>
+    <div v-else>
+        <p>Name is hidden</p>
+    </div>
+    <small v-show="showName">* Name is currently
+        <template v-if="showName">visible</template>
+        <template v-else>not visible</template>
+    </small>
+    <hr />
+    <button @click="toggle">
+        <span v-if="showName">Hide name</span>
+        <span v-else>Show name</span>
+    </button>
+    <br>
+    <br>
+    <button @click="name = 'Lord Voldemort'">
+        Change name
+    </button>
+
+</div>
+
+<script src="https://unpkg.com/vue@3.1.1"></script>
+
+<script>
+    var app = Vue.createApp({
+        mounted() {
+            //dom available, setup logic, http to get data
+        },
+        data() {
+            return {
+                showName: false,
+                name: 'Marek'
+            }
+        },
+        methods: {
+            toggle() {
+                this.showName = !this.showName
+            }
+        }
+    })
+
+    app.mount('#app')
+</script>
+</body>
+</html>
