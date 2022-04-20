@@ -24,10 +24,8 @@
     <p>This is a simple example of a Vue.js component.</p>
     <p>
         <input placeholder="Enter message" type="text" v-model="message"><br>
-    <!--    <input placeholder="Enter message" type="text" v-model="message3">-->
     </p>
-    <p>{{ message }}-</p>
-<!--    <p>{{ message3 }}-</p>-->
+    <p>{{ message }}</p>
 </div>
 
 
@@ -48,8 +46,8 @@
     //let message2 = 'Hello Vue Not reactive!';
     var app = Vue.createApp({
         mounted() {
-          /*  this.message3 = 'Hello Vue Not reactive!'
-            this.message = 'Hello Vue! Update'*/
+            /*  this.message3 = 'Hello Vue Not reactive!'
+              this.message = 'Hello Vue! Update'*/
             //dom available, setup logic,
             // http to receive data
         },
@@ -58,11 +56,11 @@
                 message: 'Hello Vue!' // html
             }
         },
-/*        computed: {
-            messageLength() {
-                return this.message.length;
-            }
-        },*/
+        /*        computed: {
+                    messageLength() {
+                        return this.message.length;
+                    }
+                },*/
         methods: {}
     })
     app.mount('#vue-widget')
