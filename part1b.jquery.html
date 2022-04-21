@@ -1,0 +1,34 @@
+<html lang="en">
+<head>
+    <meta charSet="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Learning Vue</title>
+
+</head>
+<body>
+
+<div id="jquery-widget" style="border: 1px solid;">
+    <h2>Hello jQuery!</h2>
+    <p>This is a simple example of a jQuery component.</p>
+    <p>
+        <input id="jquery-input" type="text">
+    </p>
+    <p id="jquery-output"></p>
+</div>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#jquery-output').text('Hello Jquery');
+        $('#jquery-input').val('Hello Jquery')
+
+        $('input#jquery-input').on('keyup', function () {
+            $('#jquery-output').text($(this).val());
+        });
+    });
+</script>
+
+</body>
+</html>
