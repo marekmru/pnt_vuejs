@@ -1,0 +1,74 @@
+<html lang="en">
+<head>
+    <meta charSet="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Learning Vue</title>
+    <style>
+        .error {
+            color: red;
+        }
+        .success {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+
+
+<!--    <div id="jquery-widget">
+        <h2>Hello jquery</h2>
+        <p>This is a jQuery widget</p>
+        <p>
+            <input type="text" id="jquery-input" placeholder="Enter text">
+        </p>
+        <p id="jquery-output"></p>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(function() {
+            $('#jquery-output').text('jQuery is working');
+            $('#jquery-input').text('jQuery is working');
+
+            $('#jquery-input').on('input', function() {
+                $('#jquery-output').text($(this).val());
+            });
+
+        });
+    </script>-->
+<div id="vue-widget">
+    <h2>Hello Vue</h2>
+    <p>This is a Vue widget</p>
+    <p>
+        <input id="vue-input" placeholder="Enter text" type="text" v-model="message" @mouseover="over=true" @mouseout="over=false">
+    </p>
+    <p v-if="message != null && message.length > 0"
+       :class="{error: !(message != null && message.length > 0), success: (message != null && message.length > 0)}"
+    >{{message}}</p>
+    <p :class="{error: !(message != null && message.length > 0), success: (message != null && message.length > 0)}" v-else>No message :(</p>
+
+    <button :disabled="!(message != null && message.length > 0)" @click="resetMessage" type="button">Reset message
+    </button>
+    <button :disabled="!(message != null && message.length > 0)" @click="message = null" type="button">Reset message 2
+    </button>
+    <pre>{{over}}</pre>
+
+</div>
+<script src="https://unpkg.com/vue@3.1.1"></script>
+<script>
+    var app = Vue.createApp({
+        data() {
+            return {
+                message: null,
+                over: false
+            }
+        },
+        methods: {
+            resetMessage() {
+                this.message = null
+            }
+        },
+    });
+    app.mount('#vue-widget')
+</script>
+</body>
+</html>
