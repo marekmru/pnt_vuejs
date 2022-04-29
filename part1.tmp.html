@@ -1,0 +1,80 @@
+<html lang="en">
+<head>
+    <meta charSet="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Learning Vue</title>
+
+    <style>
+        .error {
+            color: red;
+        }
+
+        .success {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+<h1>Include Vue.js</h1>
+
+<div id="another-vue-widget">
+</div>
+
+<div id="vue-widget">
+    <h2>Hello Vue!</h2>
+    <p>This is a simple example of a Vue component.</p>
+    <p @mouseout="over = false" @mouseover="over = true">
+        <input id="vue-input" type="text" v-model="message">
+    </p>
+    <p :class="{'error': disabled}"
+       v-if="disabled === false">
+        {{ message }}
+    </p>
+    <p :class="{'error': disabled}" v-else>No message available</p>
+
+    <button
+            :disabled="(message == null)"
+            @click="resetMessage" type="button">Reset
+    </button>
+    <button :disabled="disabled"
+            @click="message = null" type="button">Reset 2
+    </button>
+
+    <pre>{{over}}</pre>
+    <hr>
+    <p>{{messagePlus}}</p>
+</div>
+<script src="https://unpkg.com/vue@3.1.1"></script>
+
+<script>
+    var app = Vue.createApp({
+        methods: {
+            resetMessage() {
+                this.message = null;
+            }
+        },
+        mounted() {
+        },
+        data() {
+            return {
+                message: null,
+                over: false
+            }
+        },
+        computed: {
+            disabled() {
+                return this.message == null
+            },
+            messagePlus() {
+                if (!this.disabled) {
+                    const date = new Date().toLocaleString();
+                    return date + ': ' + this.message;
+                }
+                return 'Nothing'
+            }
+        }
+    });
+    app.mount('#vue-widget');
+</script>
+</body>
+</html>
